@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandini | Work Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Shadows+Into+Light&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for the work page */
+        .work-category {
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+        
+        .category-header {
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            text-align: center;
+        }
+        
+        .category-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-deep-terracotta);
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-earth-light);
+        }
+        
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .work-item {
+            background-color: white;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .work-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .work-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .work-item:hover .work-image img {
+            transform: scale(1.05);
+        }
+        
+        .work-info {
+            padding: var(--spacing-md);
+        }
+        
+        .work-info h3 {
+            color: var(--color-earth-dark);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+        
+        .work-info p {
+            color: var(--color-earth-light);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .work-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .work-tag {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            background-color: var(--color-accent-light);
+            color: var(--color-deep-terracotta);
+            border-radius: 30px;
+        }
+        
+        /* Drawings grid with masonry layout */
+        .drawings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: 200px;
+            grid-auto-flow: dense;
+            gap: var(--spacing-md);
+        }
+        
+        .drawing-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .drawing-item:hover {
+            transform: scale(1.02);
+            z-index: 5;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .drawing-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .drawing-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .drawing-item:nth-child(3n+1) {
+            grid-row: span 2;
+        }
+        
+        .drawing-item:nth-child(4n+1) {
+            grid-column: span 2;
+        }
+        
+        .drawing-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .drawing-item:hover .drawing-overlay {
+            transform: translateY(0);
+        }
+        
+        .drawing-overlay h4 {
+            font-size: 0.9rem;
+            color: var(--color-deep-terracotta);
+            margin-bottom: 2px;
+        }
+        
+        .drawing-overlay p {
+            font-size: 0.8rem;
+            color: var(--color-earth-light);
+        }
+        
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .drawings-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-auto-rows: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Crochet overlay for entire page -->
+    <div class="crochet-overlay"></div>
+
+    <header>
+        <div class="container">
+            <!-- <div class="logo">
+                <a href="index.html">Chandini</a>
+            </div> -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="work.html" class="active">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="work-section">
+            <div class="container">
+                <div class="section-header">
+                    <h1>My Work</h1>
+                    <p>A collection of projects that reflect my approach to architecture, design, and art.</p>
+                </div>
+                
+                <div class="work-category crochet-container">
+                    <div class="category-header">
+                        <h2>Architecture</h2>
+                        <p>Sustainable designs that harmonize with their surroundings and serve their communities.</p>
+                    </div>
+                    
+                    <div class="work-grid">
+                        <div class="work-item crochet-border">
+                            <div class="work-image">
+                                <img src="images/projects/sustainable-housing.jpg" alt="Sustainable Housing Project">
+                            </div>
+                            <div class="work-info">
+                                <h3>Sustainable Community Housing</h3>
+                                <p>A residential complex designed with passive cooling, rainwater harvesting, and community gardens.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Residential</span>
+                                    <span class="work-tag">Sustainable</span>
+                                    <span class="work-tag">Community</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="work-item crochet-border">
+                            <div class="work-image">
+                                <img src="images/projects/urban-renewal.jpg" alt="Urban Renewal Project">
+                            </div>
+                            <div class="work-info">
+                                <h3>Urban Park Revitalization</h3>
+                                <p>Transformation of an abandoned industrial site into a public green space with interactive installations.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Urban Planning</span>
+                                    <span class="work-tag">Public Space</span>
+                                    <span class="work-tag">Renovation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="work-item crochet-border">
+                            <div class="work-image">
+                                <img src="images/projects/community-center.jpg" alt="Community Center">
+                            </div>
+                            <div class="work-info">
+                                <h3>Multipurpose Community Center</h3>
+                                <p>A flexible space designed to host various community activities while minimizing energy consumption.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Public Building</span>
+                                    <span class="work-tag">Flexible Design</span>
+                                    <span class="work-tag">Energy Efficient</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-category crochet-container">
+                    <div class="category-header">
+                        <h2>Interior Design</h2>
+                        <p>Thoughtful spaces that balance aesthetics, functionality, and the personalities of their inhabitants.</p>
+                    </div>
+                    
+                    <div class="work-grid">
+                        <div class="work-item crochet-border">
+                            <div class="work-image">
+                                <img src="images/projects/cafe-interior.jpg" alt="Café Interior Design">
+                            </div>
+                            <div class="work-info">
+                                <h3>Sustainable Café Concept</h3>
+                                <p>Interior design for a café using reclaimed materials, indoor plants, and natural lighting.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Commercial</span>
+                                    <span class="work-tag">Hospitality</span>
+                                    <span class="work-tag">Sustainable</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="work-item crochet-border">
+                            <div class="work-image">
+                                <img src="images/projects/home-remodel.jpg" alt="Home Remodeling Project">
+                            </div>
+                            <div class="work-info">
+                                <h3>Minimalist Home Transformation</h3>
+                                <p>Renovation of a traditional home into a minimalist space with improved natural lighting and flow.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Residential</span>
+                                    <span class="work-tag">Renovation</span>
+                                    <span class="work-tag">Minimalism</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="work-item crochet-border">
+                            <div class="work-image">
+                                <img src="images/projects/office-design.jpg" alt="Office Design">
+                            </div>
+                            <div class="work-info">
+                                <h3>Creative Workspace Design</h3>
+                                <p>Office interior designed to foster creativity, collaboration, and employee wellbeing.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Commercial</span>
+                                    <span class="work-tag">Workspace</span>
+                                    <span class="work-tag">Biophilic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="work-category crochet-container">
+                    <div class="category-header">
+                        <h2>Drawings</h2>
+                        <p>Expressions of creativity through pencil, ink, and digital media that inform my architectural approach.</p>
+                    </div>
+                    
+                    <div class="drawings-grid">
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0035.jpg" alt="Architectural Sketch" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Urban Perspective</h4>
+                                <p>Pen and ink</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0034.jpg" alt="Conceptual Drawing" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Spatial Concept</h4>
+                                <p>Mixed media</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0033.jpg" alt="Abstract Form Study" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Form Study</h4>
+                                <p>Graphite on paper</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0032.jpg" alt="Landscape Sketch" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Landscape Interpretation</h4>
+                                <p>Watercolor</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0031.jpg" alt="Building Detail" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Architectural Detail</h4>
+                                <p>Technical pen</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0030.jpg" alt="Figure Drawing" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Figure Study</h4>
+                                <p>Charcoal</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0029.jpg" alt="Urban Sketch" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Urban Sketch</h4>
+                                <p>Ink and watercolor</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0027.jpg" alt="Pattern Study" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Pattern Study</h4>
+                                <p>Digital</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0026.jpg" alt="Environmental Study" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Environmental Study</h4>
+                                <p>Mixed media</p>
+                            </div>
+                        </div>
+                        <div class="drawing-item">
+                            <img src="images/laddu-drawings/IMG-20200405-WA0025.jpg" alt="Design Concept" loading="lazy">
+                            <div class="drawing-overlay">
+                                <h4>Design Concept</h4>
+                                <p>Sketch with color</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Chandini</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Chandini. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html> 
